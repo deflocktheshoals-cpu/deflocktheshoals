@@ -95,14 +95,34 @@
 
     if (submitBtn && status) {
       submitBtn.addEventListener("click", function () {
+        var name = (document.getElementById("c-name") || {}).value || "";
         var email = (document.getElementById("c-email") || {}).value || "";
+        var message = (document.getElementById("c-message") || {}).value || "";
+
         if (!email.trim()) {
           status.hidden = false;
           status.textContent = "Please add an email so we can reach you.";
           return;
         }
+
+        // Where messages are delivered. REPLACE with your real address.
+        var TO = "YOUR_EMAIL@example.com";
+
+        var subject = "DeFlock the Shoals: I want to help";
+        var body =
+          "Name: " + name + "\n" +
+          "Email: " + email + "\n\n" +
+          "Message:\n" + message + "\n";
+
+        var mailto =
+          "mailto:" + TO +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(body);
+
+        window.location.href = mailto;
+
         status.hidden = false;
-        status.textContent = "Thanks! You're on the list. We'll be in touch.";
+        status.textContent = "Opening your email app to finish sending. Thanks for joining!";
       });
     }
   }
