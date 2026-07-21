@@ -17,7 +17,8 @@
     font-family: "Courier New", ui-monospace, monospace;
     background: var(--paper);
     color: var(--ink);
-    line-height: 1.55;
+    font-size: 16.5px;
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -48,16 +49,18 @@
   .bar-right { display: flex; align-items: center; }
   .usa-flag {
     height: 26px; width: auto; margin-left: 20px;
-    border: 1px solid var(--line); display: block;
+    display: block;
   }
   @media (max-width: 720px) {
     .usa-flag { height: 22px; margin-left: 14px; }
   }
   .brand {
+    display: flex; align-items: center; gap: 12px;
     font-family: Georgia, serif; font-weight: 700; font-size: 20px;
     text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none; color: var(--ink);
   }
-  .brand span { color: var(--signal); }
+  .brand-logo { height: 40px; width: auto; display: block; }
+  .brand-accent { color: var(--signal); }
   nav a {
     font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;
     text-decoration: none; color: var(--ink); margin-left: 20px;
@@ -114,8 +117,8 @@
     color: var(--steel); margin-bottom: 14px;
   }
   section h2 { font-size: clamp(26px, 4vw, 38px); margin-bottom: 20px; }
-  .prose { max-width: 640px; }
-  .prose p { margin-bottom: 16px; }
+  .prose { max-width: 600px; }
+  .prose p { margin-bottom: 20px; }
 
   #map-embed { border: 3px solid var(--ink); margin-top: 8px; background: var(--paper-dim); line-height: 0; }
   #map-embed iframe { width: 100%; height: 520px; border: 0; display: block; }
@@ -235,3 +238,51 @@
   footer { padding: 40px 0 60px; }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--steel); }
   .disclaimer { max-width: 560px; }
+
+  /* ---- Mobile ---- */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.7; }
+
+    .wrap { padding: 0 18px; }
+
+    /* Header: stack brand and nav, let nav scroll sideways */
+    .bar { flex-wrap: wrap; padding: 12px 18px; gap: 10px; }
+    .brand { font-size: 17px; gap: 9px; }
+    .brand-logo { height: 32px; }
+    .bar-right { width: 100%; justify-content: space-between; }
+    .nav-links {
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      white-space: nowrap; flex: 1;
+    }
+    .nav-links a { display: inline-block; }
+    nav a:nth-child(1), nav a:nth-child(2) { display: inline-block; }
+    .usa-flag { height: 20px; margin-left: 10px; flex-shrink: 0; }
+
+    .movement { font-size: 12px; padding: 12px 18px; }
+
+    /* Hero */
+    .hero { padding: 40px 0 32px; }
+    .hero h1 { font-size: clamp(30px, 9vw, 44px); }
+    .eyebrow { font-size: 11px; flex-wrap: wrap; }
+    .cta-row { flex-direction: column; }
+    .cta-row .btn { width: 100%; text-align: center; }
+
+    /* Sections tighter */
+    section { padding: 40px 0; }
+    section h2 { font-size: clamp(24px, 6vw, 30px); }
+    .pullquote { font-size: clamp(22px, 6vw, 28px); }
+
+    /* Stack any side-by-side grids */
+    .stats, .join .grid { grid-template-columns: 1fr; }
+    .step { grid-template-columns: 36px 1fr; gap: 12px; padding: 18px; }
+
+    /* Modal fits small screens */
+    .modal { width: 92%; padding: 22px; max-height: 88vh; overflow-y: auto; }
+
+    /* Footer stacks */
+    footer .wrap { flex-direction: column; gap: 12px; }
+
+    /* Comfortable tap targets */
+    .btn { padding: 14px 22px; }
+    nav a { padding: 6px 0; }
+  }
