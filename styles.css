@@ -1,10 +1,10 @@
 :root {
-    --ink: #12171c;          /* near-black text */
-    --paper: #e8e4d8;        /* warm document paper */
+    --ink: #12171c;
+    --paper: #e8e4d8;
     --paper-dim: #d8d3c4;
-    --signal: #c8442a;       /* alert red — the "you are being recorded" color */
+    --signal: #c8442a;
     --signal-dim: #9c3520;
-    --steel: #3a4750;        /* cool infrastructure gray-blue */
+    --steel: #3a4750;
     --line: #b7b1a1;
     --focus: #1d6fb8;
   }
@@ -36,7 +36,6 @@
 
   .wrap { max-width: 940px; margin: 0 auto; padding: 0 24px; }
 
-  /* ---- Top bar ---- */
   header {
     border-bottom: 3px solid var(--ink);
     background: var(--paper);
@@ -45,6 +44,14 @@
   .bar {
     display: flex; align-items: center; justify-content: space-between;
     padding: 14px 24px; max-width: 940px; margin: 0 auto;
+  }
+  .bar-right { display: flex; align-items: center; }
+  .usa-flag {
+    height: 26px; width: auto; margin-left: 20px;
+    border: 1px solid var(--line); display: block;
+  }
+  @media (max-width: 720px) {
+    .usa-flag { height: 22px; margin-left: 14px; }
   }
   .brand {
     font-family: Georgia, serif; font-weight: 700; font-size: 20px;
@@ -65,7 +72,6 @@
     nav a { margin-left: 14px; }
   }
 
-  /* ---- Hero ---- */
   .hero { padding: 64px 0 48px; border-bottom: 1px solid var(--line); }
   .eyebrow {
     font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
@@ -93,7 +99,6 @@
   .btn-primary:hover { box-shadow: 4px 4px 0 var(--signal-dim); }
   .btn-ghost { background: transparent; color: var(--ink); }
 
-  /* ---- Stat strip ---- */
   .stats {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
     background: var(--line); border: 1px solid var(--line); margin: 48px 0;
@@ -103,7 +108,6 @@
   .stat .l { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--steel); margin-top: 4px; }
   @media (max-width: 620px) { .stats { grid-template-columns: 1fr; } }
 
-  /* ---- Section ---- */
   section { padding: 56px 0; border-bottom: 1px solid var(--line); }
   .sec-label {
     font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
@@ -113,20 +117,17 @@
   .prose { max-width: 640px; }
   .prose p { margin-bottom: 16px; }
 
-  /* ---- Map ---- */
   #map-embed { border: 3px solid var(--ink); margin-top: 8px; background: var(--paper-dim); line-height: 0; }
   #map-embed iframe { width: 100%; height: 520px; border: 0; display: block; }
   @media (max-width: 620px) { #map-embed iframe { height: 420px; } }
   .map-note { font-size: 13px; color: var(--steel); margin-top: 10px; line-height: 1.5; }
 
-  /* ---- Steps ---- */
   .steps { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 24px; }
   .step { background: var(--paper); padding: 22px 24px; display: grid; grid-template-columns: 48px 1fr; gap: 18px; }
   .step .num { font-family: Georgia, serif; font-size: 30px; font-weight: 700; color: var(--signal); }
   .step h3 { font-size: 18px; margin-bottom: 6px; }
   .step p { font-size: 15px; }
 
-  /* ---- Movement banner (points to deflock.org) ---- */
   .movement {
     background: var(--steel); color: var(--paper);
     padding: 14px 24px; font-size: 13px; text-align: center;
@@ -134,7 +135,6 @@
   }
   .movement a { color: var(--paper); font-weight: 700; text-decoration: underline; }
 
-  /* ---- Money / accountability section ---- */
   .money .prose { max-width: 660px; }
   .claimbox {
     border-left: 4px solid var(--signal); background: var(--paper-dim);
@@ -147,7 +147,6 @@
   .sources { font-size: 12px; color: var(--steel); margin-top: 20px; }
   .sources a { color: var(--steel); }
 
-  /* ---- Escalation / drones ---- */
   .escalation { background: var(--ink); color: var(--paper); border-bottom: none; }
   .escalation .sec-label { color: var(--signal); }
   .escalation h2 { color: var(--paper); }
@@ -155,7 +154,6 @@
   .escalation .prose p { margin-bottom: 16px; }
   .escalation strong { color: var(--paper); }
 
-  /* ---- Community / join ---- */
   .join .grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 24px;
@@ -165,14 +163,12 @@
   .join .card p { font-size: 14px; margin-bottom: 14px; }
   .join .card .btn { padding: 10px 18px; font-size: 12px; }
 
-  /* ---- Flag stripe (freedom framing) ---- */
   .flag-stripe { height: 6px; display: flex; }
   .flag-stripe span { flex: 1; }
   .flag-stripe .r { background: var(--signal); }
   .flag-stripe .w { background: var(--paper); }
   .flag-stripe .b { background: var(--steel); }
 
-  /* ---- Inline source citations ---- */
   .cite { font-size: 12px; color: var(--steel); }
   .cite a { color: var(--steel); text-decoration: underline; }
   .cite-list {
@@ -182,7 +178,6 @@
   .cite-list li { margin-bottom: 4px; }
   .cite-list a { color: var(--steel); }
 
-  /* ---- Case examples ---- */
   .cases { margin: 22px 0; display: grid; gap: 14px; }
   .case {
     border: 1px solid var(--line); padding: 16px 20px; background: var(--paper-dim);
@@ -195,7 +190,6 @@
   .case .src { font-size: 11px; color: var(--steel); margin-top: 8px; }
   .case .src a { color: var(--steel); }
 
-  /* ---- Argument section ---- */
   .why { background: var(--ink); color: var(--paper); border-bottom: none; }
   .why .sec-label { color: var(--signal); }
   .why h2 { color: var(--paper); }
@@ -208,7 +202,36 @@
   .why .prose p { margin-bottom: 18px; }
   .why .prose strong { color: var(--paper); }
 
-  /* ---- Footer ---- */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(18, 23, 28, 0.72); padding: 24px;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.is-open { display: flex; }
+  .modal {
+    background: var(--paper); border: 3px solid var(--ink);
+    max-width: 480px; width: 100%; padding: 28px; position: relative;
+    max-height: 90vh; overflow-y: auto;
+  }
+  .modal h2 { font-size: 26px; margin-bottom: 10px; }
+  .modal-lede { font-size: 14px; color: var(--steel); margin-bottom: 20px; }
+  .modal-close {
+    position: absolute; top: 12px; right: 14px; background: none; border: none;
+    font-size: 28px; line-height: 1; cursor: pointer; color: var(--ink);
+    font-family: inherit;
+  }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--steel); margin-bottom: 6px;
+  }
+  .field input, .field textarea {
+    width: 100%; padding: 10px 12px; font-family: inherit; font-size: 15px;
+    border: 2px solid var(--ink); background: var(--paper); color: var(--ink);
+  }
+  .field textarea { resize: vertical; }
+  .modal-note { font-size: 14px; color: var(--signal-dim); margin-top: 14px; }
+
   footer { padding: 40px 0 60px; }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--steel); }
   .disclaimer { max-width: 560px; }
