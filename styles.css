@@ -264,6 +264,8 @@
   .step:hover .num { transform: scale(1.15); }
   .step h3 { font-size: 18px; margin-bottom: 6px; }
   .step p { font-size: 15px; }
+  .step p + p { margin-top: 14px; }
+  .step .btn { margin-top: 6px; padding: 10px 20px; font-size: 12px; }
   @media (max-width: 520px) {
     .step { grid-template-columns: 34px 1fr; gap: 12px; padding: 20px 18px; }
     .step .num { font-size: 24px; }
