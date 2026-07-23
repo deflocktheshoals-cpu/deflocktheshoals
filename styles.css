@@ -81,12 +81,37 @@
   nav a.is-active { color: var(--signal); }
   nav a.is-active::after { transform: scaleX(1); }
   .nav-links { display: flex; }
-  @media (max-width: 860px) {
-    .nav-links a:nth-child(1), .nav-links a:nth-child(2) { display: none; }
-    nav a { margin-left: 14px; }
+
+  /* ---- Mobile nav ---- */
+  .nav-toggle {
+    display: none; background: none; border: 2px solid var(--ink);
+    padding: 8px 9px; margin-left: 14px; cursor: pointer;
+    flex-direction: column; gap: 4px;
   }
-  @media (max-width: 560px) {
-    .nav-links a:nth-child(3) { display: none; }
+  .nav-toggle span {
+    display: block; width: 20px; height: 2px; background: var(--ink);
+    transition: transform .2s ease, opacity .2s ease;
+  }
+  .nav-toggle.is-open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.is-open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .nav-mobile { display: none; border-top: 1px solid var(--line); }
+  .nav-mobile.is-open { display: block; }
+  .nav-mobile a {
+    display: block; padding: 16px 24px; margin: 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;
+    text-decoration: none; color: var(--ink);
+  }
+  .nav-mobile a:last-child { border-bottom: none; }
+  .nav-mobile a:active { background: var(--paper-dim); }
+  .nav-mobile a::after { display: none; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .brand { font-size: 17px; }
   }
 
   /* ---- Hero ---- */
