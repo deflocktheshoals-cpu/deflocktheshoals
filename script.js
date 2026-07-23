@@ -36,9 +36,6 @@
   }
 
   // --- 2. Map: try to embed, fall back cleanly to the panel already in the HTML ---
-  // maps.deflock.org may refuse to be framed by other sites. If it does, the
-  // panel stays and the user gets a clean "open the map" call to action instead
-  // of an error. We only swap in the iframe if it actually loads.
   var mapEmbed = document.getElementById("map-embed");
   if (mapEmbed) {
     var mapUrl = mapEmbed.getAttribute("data-map-url");
@@ -62,7 +59,6 @@
         if (settled) return;
         settled = true;
         clearTimeout(giveUp);
-        // The frame loaded, so promote it to the real, full size map.
         probe.style.cssText = "";
         mapEmbed.innerHTML = "";
         mapEmbed.style.display = "block";
@@ -136,7 +132,6 @@
       if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
     });
 
-    // Submit to Formspree via fetch so the user stays on the page.
     if (form && status) {
       form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -197,5 +192,23 @@
     );
 
     revealTargets.forEach(function (el) { revealObserver.observe(el); });
+  }
+
+  // --- 7. Mobile nav toggle ---
+  var navToggle = document.getElementById("nav-toggle");
+  var navMobile = document.getElementById("nav-mobile");
+  if (navToggle && navMobile) {
+    navToggle.addEventListener("click", function () {
+      var open = navMobile.classList.toggle("is-open");
+      navToggle.classList.toggle("is-open", open);
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    navMobile.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navMobile.classList.remove("is-open");
+        navToggle.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
   }
 })();
