@@ -1,5 +1,4 @@
 // DeFlock the Shoals — front-end behavior
-// Everything here is progressive enhancement: the page works fully without it.
 (function () {
   "use strict";
 
