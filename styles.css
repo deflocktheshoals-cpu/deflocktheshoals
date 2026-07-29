@@ -217,6 +217,24 @@
   }
   .pullquote-sm em { font-style: normal; color: var(--signal); }
 
+  /* ---- Flock photo ---- */
+  .flock-photo {
+    float: right; width: 240px; max-width: 42%;
+    margin: 0 0 18px 22px;
+    border: 2px solid var(--ink); background: var(--ink);
+  }
+  .flock-photo img { display: block; width: 100%; height: auto; }
+  .flock-photo figcaption {
+    font-size: 12px; color: var(--paper); background: var(--ink);
+    padding: 8px 10px; line-height: 1.45;
+  }
+  @media (max-width: 560px) {
+    .flock-photo {
+      float: none; width: 100%; max-width: 320px;
+      margin: 0 auto 20px;
+    }
+  }
+
   /* ---- Videos ---- */
   .video-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
