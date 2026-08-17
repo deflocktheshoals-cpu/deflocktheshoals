@@ -1,47 +1,41 @@
-// DeFlock the Shoals — front-end behavior
-(function () {
-  "use strict";
+document.addEventListener("DOMContentLoaded", function () {
 
-  var reduceMotion = window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // --- 1. Nav scroll-spy: highlight the section you're looking at ---
+  var navLinks = document.querySelectorAll(".nav-links a, .nav-mobile a");
+  var sections = [];
+  navLinks.forEach(function (link) {
+    var id = link.getAttribute("href");
+    if (id && id.charAt(0) === "#") {
+      var sec = document.querySelector(id);
+      if (sec) sections.push({ link: link, sec: sec, id: id });
+    }
+  });
 
-  // --- 1. Highlight the current section in the nav as you scroll ---
-  var navLinks = Array.prototype.slice.call(
-    document.querySelectorAll('.nav-links a[href^="#"]')
-  );
-  if (navLinks.length && "IntersectionObserver" in window) {
-    var linkFor = {};
-    navLinks.forEach(function (a) {
-      var id = a.getAttribute("href").slice(1);
-      if (id) linkFor[id] = a;
+  function onScrollSpy() {
+    var pos = window.scrollY + 120;
+    var current = null;
+    sections.forEach(function (item) {
+      if (item.sec.offsetTop <= pos) current = item.id;
     });
-    var navObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          var link = linkFor[entry.target.id];
-          if (!link) return;
-          if (entry.isIntersecting) {
-            navLinks.forEach(function (l) { l.classList.remove("is-active"); });
-            link.classList.add("is-active");
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
-    );
-    Object.keys(linkFor).forEach(function (id) {
-      var section = document.getElementById(id);
-      if (section) navObserver.observe(section);
+    navLinks.forEach(function (link) {
+      if (current && link.getAttribute("href") === current) {
+        link.classList.add("is-active");
+      } else {
+        link.classList.remove("is-active");
+      }
     });
   }
+  window.addEventListener("scroll", onScrollSpy);
+  onScrollSpy();
 
-  // --- 2. Map: try to embed, fall back cleanly to the panel already in the HTML ---
+  // --- 2. Map: try to embed, fall back to the panel if it refuses ---
   var mapEmbed = document.getElementById("map-embed");
   if (mapEmbed) {
     var mapUrl = mapEmbed.getAttribute("data-map-url");
     if (mapUrl) {
       var probe = document.createElement("iframe");
       probe.src = mapUrl;
-      probe.title = "DeFlock map of license plate readers in the Shoals";
+      probe.title = "DeFlock camera map of the Shoals";
       probe.setAttribute("loading", "lazy");
       probe.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
       probe.style.cssText =
@@ -75,125 +69,117 @@
     }
   }
 
-  // --- 3. Current year in the footer ---
-  var yearSlot = document.getElementById("year");
-  if (yearSlot) {
-    yearSlot.textContent = new Date().getFullYear();
-  }
+  // --- 3. Footer year ---
+  var yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // --- 4. Accordions: only one open at a time, per section ---
-  var accordions = Array.prototype.slice.call(document.querySelectorAll("details.acc"));
-  accordions.forEach(function (acc) {
-    acc.addEventListener("toggle", function () {
-      if (!acc.open) return;
-      var section = acc.closest("section");
-      if (!section) return;
-      section.querySelectorAll("details.acc").forEach(function (other) {
-        if (other !== acc) other.open = false;
+  // --- 4. Accordions: only one open per section ---
+  var accGroups = document.querySelectorAll("section");
+  accGroups.forEach(function (group) {
+    var accs = group.querySelectorAll("details.acc");
+    accs.forEach(function (acc) {
+      acc.addEventListener("toggle", function () {
+        if (acc.open) {
+          accs.forEach(function (other) {
+            if (other !== acc) other.open = false;
+          });
+        }
       });
     });
   });
 
   // --- 5. Contact modal ---
   var modal = document.getElementById("contact-modal");
-  if (modal) {
-    var opener = document.getElementById("open-contact");
-    var closeBtn = document.getElementById("close-contact");
-    var form = document.getElementById("contact-form");
-    var status = document.getElementById("contact-status");
-    var submitBtn = document.getElementById("submit-contact");
-    var lastFocused = null;
+  var openBtn = document.getElementById("open-contact");
+  var closeBtn = document.getElementById("close-contact");
 
-    function openModal() {
-      lastFocused = document.activeElement;
+  function openModal() {
+    if (modal) {
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-      var first = document.getElementById("c-name");
-      if (first) first.focus();
     }
-
-    function closeModal() {
+  }
+  function closeModal() {
+    if (modal) {
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
-
-    if (opener) opener.addEventListener("click", openModal);
-    if (closeBtn) closeBtn.addEventListener("click", closeModal);
-
+  }
+  if (openBtn) openBtn.addEventListener("click", openModal);
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  if (modal) {
     modal.addEventListener("click", function (e) {
       if (e.target === modal) closeModal();
     });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeModal();
+  });
 
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
-    });
-
-    if (form && status) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
+  // --- 6. Contact form via Formspree (stay on page) ---
+  var form = document.getElementById("contact-form");
+  var status = document.getElementById("contact-status");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      if (status) {
         status.hidden = false;
         status.classList.remove("is-ok");
         status.textContent = "Sending...";
-        if (submitBtn) submitBtn.disabled = true;
-
-        fetch(form.action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" }
-        })
-          .then(function (res) {
-            if (res.ok) {
-              form.reset();
+      }
+      fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            form.reset();
+            if (status) {
               status.classList.add("is-ok");
-              status.textContent = "Thanks! Your message is on its way. We'll be in touch.";
-              setTimeout(closeModal, 2500);
-            } else {
-              return res.json().then(function (data) {
-                var msg = "Something went wrong. Please try again.";
-                if (data && data.errors && data.errors.length) {
-                  msg = data.errors.map(function (x) { return x.message; }).join(", ");
-                }
-                status.textContent = msg;
-              });
+              status.textContent = "Thanks! Your message has been sent.";
             }
-          })
-          .catch(function () {
-            status.textContent = "Couldn't send that. Check your connection and try again.";
-          })
-          .then(function () {
-            if (submitBtn) submitBtn.disabled = false;
-          });
-      });
-    }
+          } else {
+            if (status) {
+              status.textContent =
+                "Something went wrong. Please try again or email us directly.";
+            }
+          }
+        })
+        .catch(function () {
+          if (status) {
+            status.textContent =
+              "Something went wrong. Please try again or email us directly.";
+          }
+        });
+    });
   }
 
-  // --- 6. Gentle scroll reveal for sections ---
-  if (!reduceMotion && "IntersectionObserver" in window) {
-    var revealTargets = Array.prototype.slice.call(
-      document.querySelectorAll(".stat, .acc, .step, .join .card, .case")
-    );
-    revealTargets.forEach(function (el) { el.classList.add("reveal"); });
-
-    var revealObserver = new IntersectionObserver(
+  // --- 7. Scroll reveal ---
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var obs = new IntersectionObserver(
       function (entries) {
-        entries.forEach(function (entry, i) {
-          if (!entry.isIntersecting) return;
-          var el = entry.target;
-          setTimeout(function () { el.classList.add("is-visible"); }, i * 60);
-          revealObserver.unobserve(el);
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
         });
       },
-      { rootMargin: "0px 0px -60px 0px", threshold: 0.08 }
+      { threshold: 0.12 }
     );
-
-    revealTargets.forEach(function (el) { revealObserver.observe(el); });
+    revealEls.forEach(function (el) {
+      obs.observe(el);
+    });
+  } else {
+    revealEls.forEach(function (el) {
+      el.classList.add("is-visible");
+    });
   }
 
-  // --- 7. Mobile nav toggle ---
+  // --- 8. Mobile nav toggle ---
   var navToggle = document.getElementById("nav-toggle");
   var navMobile = document.getElementById("nav-mobile");
   if (navToggle && navMobile) {
@@ -210,4 +196,25 @@
       });
     });
   }
-})();
+
+  // --- 9. Image lightbox (tap to enlarge) ---
+  var zoomImgs = document.querySelectorAll(".zoomable");
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  if (lightbox && lightboxImg) {
+    zoomImgs.forEach(function (img) {
+      img.addEventListener("click", function () {
+        lightboxImg.src = img.getAttribute("src");
+        lightboxImg.alt = img.getAttribute("alt") || "";
+        lightbox.classList.add("is-open");
+      });
+    });
+    lightbox.addEventListener("click", function () {
+      lightbox.classList.remove("is-open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") lightbox.classList.remove("is-open");
+    });
+  }
+
+});
