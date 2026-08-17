@@ -59,7 +59,7 @@
       </div>
       <div class="cta-row cta-tools">
         <a href="#map" class="btn btn-tool">See the camera map &rarr;<span class="btn-sub">Where the cameras are in the Shoals</span></a>
-        <a href="#flocked" class="btn btn-tool">Have I Been Flocked? &rarr;<span class="btn-sub">Check if your plate has been searched</span></a>
+        <a href="https://haveibeenflocked.com/" target="_blank" rel="noopener" class="btn btn-tool">Have I Been Flocked? &rarr;<span class="btn-sub">Check if your plate's been searched (opens new site)</span></a>
       </div>
     </div>
   </div>
@@ -77,7 +77,7 @@
     <div class="wrap">
       <p class="sec-label">Start here</p>
       <h2>Learn what's watching you</h2>
-      <p class="prose section-intro">Four things worth understanding. Lots of information in each tab.</p>
+      <p class="prose section-intro">A few things worth understanding. Lots of information in each tab.</p>
 
       <details class="acc" open>
         <summary>
@@ -92,6 +92,12 @@
           <p>Flock Safety sells automated license plate readers (ALPRs), which are solar powered cameras usually mounted on a small pole near a road. As you drive past, the camera photographs your car, reads your plate, and records the time and location. It builds a searchable history of where vehicles have been.</p>
           <p>Police departments buy access to this data, often on annual contracts. Many networks are also shared between agencies, so a plate captured here can be searched by departments far outside the Shoals. Most people have no idea the cameras are there or that their movements are being logged.</p>
           <p>These aren't simple traffic cameras. Flock markets its system as AI powered, and it does more than read plates. Its "Vehicle Fingerprint" technology uses machine learning to catalog a car's make, color, body type, dents, roof racks, bumper stickers, and other features, so police can search for a vehicle even without a plate number. Flock's newer Condor cameras can automatically pan, tilt, and zoom to detect and follow people. Flock says its plate readers don't use facial recognition and don't identify individuals, a distinction critics argue is thin once a camera is zooming in on faces.</p>
+
+          <figure class="cam-figure">
+            <img src="assets/flocksees.png" alt="Example of what a Flock camera captures: a grey Toyota sedan with the license plate, an Alabama sticker, and a rear rack all boxed and labeled by the AI, tagged with GPS coordinates and a timestamp" loading="lazy" class="zoomable">
+            <figcaption>This is what the camera actually sees. It's not just reading the plate. It's tagging the car as a "grey Toyota sedan," boxing the bumper stickers, the rack, even a decal, and stamping it with your exact GPS location and the date and time. Tap the image to enlarge it.</figcaption>
+          </figure>
+
           <p class="cite">Sources: <a href="https://www.bgr.com/2192089/flock-cameras-scanning-license-plate-audio-data-use/" target="_blank" rel="noopener">BGR</a>, <a href="https://en.wikipedia.org/wiki/Flock_Safety" target="_blank" rel="noopener">Wikipedia</a>, and Flock's own <a href="https://www.flocksafety.com/trust" target="_blank" rel="noopener">policy pages</a>.</p>
         </div>
       </details>
@@ -107,6 +113,20 @@
           <p>Here's why that matters. The police aren't allowed to follow you around town, log everywhere you go, and keep a permanent record of it. If they suspect you of a crime, they have to bring evidence to a judge and get permission first. That check of a judge, probable cause, and a warrant is what stands between ordinary life and unreasonable search and seizure.</p>
           <p><strong>Flock is the loophole.</strong> Because Flock is a private company, it isn't bound by those rules. It can track everyone, all the time, no suspicion required. But Flock works hand in hand with the police. So instead of asking a judge for permission, an officer can simply ask Flock where your car has been for the past month. The warrant requirement doesn't get satisfied. It just gets skipped.</p>
           <p>That's the real problem: surveillance the government could never legally run itself, bought off the shelf from a company that can.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>
+          <span class="acc-title">The law is starting to catch up</span>
+          <span class="acc-sub">What the Supreme Court's Chatrie ruling means for this</span>
+        </summary>
+        <div class="acc-body prose">
+          <p>Here's the part that gives us real hope, and it's worth understanding because it's the strongest legal ground we stand on.</p>
+          <p>In 2026, the Supreme Court handed down its first big Fourth Amendment case in six years: <strong>Chatrie v. United States</strong>. It was a major win for privacy. The Court ruled that "geofence" searches, which pull cellphone location data to figure out everyone who was in a certain area at a certain time, are searches under the Fourth Amendment. That means police need probable cause and a warrant to do them.</p>
+          <p>Just as important, the Court pushed back on something called the <strong>"third-party doctrine."</strong> For years, the government argued that once your data is held by some company (your phone carrier, an app, a private service), you've basically given up your Fourth Amendment protection over it, so they can grab it without a warrant. Chatrie said no: you can still have a reasonable expectation of privacy in your location history even when a third party is holding it.</p>
+          <p>Look at how directly that lines up with Flock. A private company holds a detailed history of everywhere your car has been, and police tap into it without a warrant, using the exact "it's held by a third party" logic the Supreme Court just rejected for location data. Chatrie didn't rule on Flock specifically, so this isn't a done deal. But the reasoning points right at it, and it's why we think warrantless plate tracking is on borrowed time, legally speaking.</p>
+          <p class="cite">Background on the ruling: <a href="https://en.wikipedia.org/wiki/United_States_v._Chatrie" target="_blank" rel="noopener">Chatrie v. United States</a>.</p>
         </div>
       </details>
 
@@ -132,13 +152,40 @@
 
       <details class="acc">
         <summary>
-          <span class="acc-title">Cameras today, drones tomorrow</span>
-          <span class="acc-sub">Where this technology is heading next</span>
+          <span class="acc-title">It's already storing more than plates</span>
+          <span class="acc-sub">What one researcher found in the data</span>
         </summary>
         <div class="acc-body prose">
-          <p>License plate readers are only the start. Flock has already moved into drones. It acquired a "Drone as First Responder" company and is rolling out programs that let police launch aircraft to a location and follow vehicles from the air. The company has said it aims to expand these drone programs to around 100 cities.</p>
-          <p>A camera on a pole records the cars that pass one fixed spot. A drone can follow <strong>you</strong>, leaving your driveway, tracking you across town, watching where you stop. It's the same warrant skipping problem, lifted into the sky and made mobile.</p>
-          <p>The time to draw the line is before the Shoals becomes one of those cities. It is far easier to keep new surveillance out than to remove it once contracts are signed and budgets depend on it.</p>
+          <p>Flock likes to say these are just license plate readers. But independent security researcher Benn Jordan dug into how the system actually handles the images it captures, and found something that doesn't match that story.</p>
+          <p>According to his investigation, the cameras don't only photograph plates. They capture images of all kinds of things that aren't vehicles at all, and rather than deleting those non-vehicle images, the system <strong>sorts them off into a separate folder and keeps them.</strong> Think about that. If the whole purpose is reading license plates, there's no reason to be holding onto photos of everything and everyone else the camera happens to see. But it is.</p>
+          <p>That's the thing about "it only does X." Once the hardware is out there capturing everything in view, what it does with those images is a policy choice, and policies change. The camera is already seeing far more than a plate. Whether that extra gets used, and how, is up to whoever controls the system, not you.</p>
+          <p class="cite">See Benn Jordan's work, linked in our <a href="#resources">videos and resources</a> section below.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>
+          <span class="acc-title">Cameras today, more tomorrow</span>
+          <span class="acc-sub">Drones now, and the radios already built into the cameras</span>
+        </summary>
+        <div class="acc-body prose">
+          <p>License plate readers are only the start, and this is the part we most want people to think about, because it's the reason to act <em>now</em> instead of later.</p>
+          <p>Flock has already moved into drones. It acquired a "Drone as First Responder" company and is rolling out programs that let police launch aircraft to a location and follow vehicles from the air. The company has said it aims to expand these drone programs to around 100 cities. A camera on a pole records the cars that pass one fixed spot. A drone can follow <strong>you</strong>, leaving your driveway, across town, watching where you stop.</p>
+          <p>And here's the part most people don't know. When independent researchers physically took apart Flock cameras to see what's inside, they found the devices don't just have a cellular connection. They also contain <strong>Bluetooth and WiFi radios</strong>. The technology that would let one of these cameras detect the wireless devices around it, your phone, your smartwatch, your earbuds, your car's own Bluetooth, is already physically built into the hardware on the pole.</p>
+
+          <!-- ====== YOUR OWN EXCERPT GOES HERE ====== -->
+          <!-- Write whatever you want in the paragraphs below. I've left a
+               starter frame you can keep, rewrite, or delete entirely. -->
+          <p>[YOUR WORDS HERE — this is where you explain, in your own voice, what that capability could mean in the future and why that makes it worth stopping now.]</p>
+          <!-- ====== END YOUR EXCERPT ====== -->
+
+          <div class="claimbox">
+            <span class="tag">How this kind of tracking works</span>
+            Your phone, your smartwatch, your car's Bluetooth, and your wireless earbuds are all constantly broadcasting little radio signals with unique IDs. Any device with a Bluetooth or WiFi radio can, in principle, pick those up as they pass by. It's the same basic method retail stores already use to count and follow foot traffic. A device that can read your plate <em>and</em> the unique signature of the phone in your pocket doesn't just know your car was somewhere. It can start to know <em>you</em> were, even in someone else's car, even on foot.
+          </div>
+
+          <p>That's why the time to draw the line is before the network is finished being built, not after. It is far easier to keep new surveillance out than to peel it back once the poles are up, the contracts are signed, and the budgets depend on it.</p>
+          <p class="cite">Sources: teardown documenting the cameras' Bluetooth/WiFi radios and chipsets by <a href="https://www.ryanohoro.com/post/spotting-flock-safety-s-falcon-cameras" target="_blank" rel="noopener">Ryan O'Horo</a>; background on how passive wireless and Bluetooth tracking works via the <a href="https://www.eff.org/issues/street-level-surveillance" target="_blank" rel="noopener">EFF's Street-Level Surveillance project</a>.</p>
         </div>
       </details>
     </div>
@@ -177,6 +224,33 @@
             </div>
           </div>
           <p>The point isn't that every officer is a stalker. It's that once this database exists, a single person with a login can track anyone's movements as easily as a Google search, and the safeguards have repeatedly failed to stop it in advance.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>
+          <span class="acc-title">The system is wrong a lot, and people pay for it</span>
+          <span class="acc-sub">False positives, wrongful stops, and guns drawn on the innocent</span>
+        </summary>
+        <div class="acc-body prose">
+          <p>Set aside deliberate abuse for a second. Even when everyone's acting in good faith, these systems are wrong constantly, and the mistakes land on innocent people.</p>
+          <p>In Roseville, California, the police department found that <strong>71 percent</strong> of its Flock alerts were incorrect. An audit of the LAPD found roughly <strong>one in three</strong> alerts it reviewed were inaccurate. These aren't paperwork errors. When a computer misreads a plate and flags a car as suspicious, an officer often walks up treating an innocent person as a criminal.</p>
+          <div class="cases">
+            <div class="case">
+              <div class="where">A "7" read as a "2"</div>
+              A single misread character led to a driver being stopped and detained over a car that wasn't the one police were actually looking for.
+            </div>
+            <div class="case">
+              <div class="where">An "O" read as a "0"</div>
+              Two grandparents were pulled over and held at gunpoint in front of their three-year-old grandchild because the system misread their plate.
+            </div>
+            <div class="case">
+              <div class="where">Two weeks in jail</div>
+              A woman was jailed for roughly two weeks after a camera misidentified her vehicle.
+            </div>
+          </div>
+          <p>Flock is now adding tools to "flag unusual activity." But a flag doesn't fix a system that's wrong a third to two-thirds of the time, and it doesn't un-draw a gun. The only real accountability is a fully public audit trail, so the community can see how often this technology is used, and how often it's simply wrong.</p>
+          <p class="cite">Sources compiled from reporting by <a href="https://www.businessinsider.com" target="_blank" rel="noopener">Business Insider</a> and municipal audit findings (Roseville PD, LAPD Inspector General).</p>
         </div>
       </details>
 
@@ -244,6 +318,13 @@
                       allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen></iframe>
             </div>
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/N2-bxmWOH4U"
+                      title="Video on license plate surveillance"
+                      loading="lazy"
+                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
           </div>
         </div>
       </details>
@@ -272,16 +353,12 @@
               <span class="link-src">ACLU of Wisconsin</span>
             </li>
             <li>
+              <a href="https://www.ryanohoro.com/post/spotting-flock-safety-s-falcon-cameras" target="_blank" rel="noopener">A teardown of Flock's cameras (the Bluetooth/WiFi radios inside)</a>
+              <span class="link-src">Ryan O'Horo</span>
+            </li>
+            <li>
               <a href="https://centralcurrent.org/syracuse-police-exposed-driver-data-to-thousands-of-cops-around-the-country/" target="_blank" rel="noopener">Syracuse police exposed driver data to thousands of officers nationwide</a>
               <span class="link-src">Central Current</span>
-            </li>
-            <li>
-              <a href="https://www.ksbw.com/article/santa-cruz-flock-camera-data-sharing-illegal/69490747" target="_blank" rel="noopener">Santa Cruz finds out-of-state departments accessed their camera data</a>
-              <span class="link-src">KSBW</span>
-            </li>
-            <li>
-              <a href="https://www.wuft.org/public-safety/2026-06-22/flock-ai-security-cameras-spark-concerns-over-privacy-misuse-among-gainesville-residents" target="_blank" rel="noopener">Flock cameras spark privacy concerns among residents</a>
-              <span class="link-src">WUFT</span>
             </li>
             <li>
               <a href="https://www.bgr.com/2192089/flock-cameras-scanning-license-plate-audio-data-use/" target="_blank" rel="noopener">What Flock cameras actually scan and store</a>
@@ -298,6 +375,10 @@
         </summary>
         <div class="acc-body prose">
           <ul class="link-list">
+            <li>
+              <a href="https://en.wikipedia.org/wiki/United_States_v._Chatrie" target="_blank" rel="noopener">Chatrie v. United States (Supreme Court, geofence + third-party doctrine)</a>
+              <span class="link-src">Background on the 2026 ruling</span>
+            </li>
             <li>
               <a href="https://www.eff.org/press/releases/lawsuit-challenges-san-joses-warrantless-alpr-mass-surveillance" target="_blank" rel="noopener">Lawsuit challenges San Jose's warrantless ALPR mass surveillance</a>
               <span class="link-src">Electronic Frontier Foundation</span>
@@ -390,11 +471,11 @@
     <div class="wrap">
       <p class="sec-label">Check your plate</p>
       <h2>Have I Been Flocked?</h2>
-      <p class="prose section-intro">"Have I Been Flocked" is an independent tool that compiles Flock search records released through public records requests. Enter your license plate and it tells you whether an operator on the Flock system has looked your plate up. Note: a result means someone <em>searched</em> your plate, not that a camera simply photographed you driving by, and the data only covers agencies whose records have been released so far.</p>
-      <div id="flocked-embed" data-flocked-url="https://haveibeenflocked.com/">
+      <p class="prose section-intro">"Have I Been Flocked" is an independent tool that compiles Flock search records released through public records requests. You type in your license plate and it tells you whether an operator on the Flock system has looked your plate up. One important thing to understand: a result means someone <em>searched</em> your plate, not that a camera simply photographed you driving by. And the data only covers agencies whose records have been released so far, which may not yet include the Shoals.</p>
+      <div id="flocked-cta">
         <div class="map-panel">
           <p class="map-panel-title">Check your license plate</p>
-          <p class="map-panel-text">See whether your plate appears in the Flock search records that have been made public.</p>
+          <p class="map-panel-text">Opens haveibeenflocked.com in a new tab so you can search your plate against the Flock records that have been made public.</p>
           <a class="btn btn-primary" href="https://haveibeenflocked.com/" target="_blank" rel="noopener">Open Have I Been Flocked &rarr;</a>
         </div>
       </div>
@@ -485,6 +566,11 @@
       <p class="modal-note" id="contact-status" hidden></p>
     </form>
   </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
 </div>
 
 <footer>
