@@ -144,6 +144,30 @@
   .btn-primary:hover { box-shadow: 4px 4px 0 var(--signal-dim); }
   .btn-ghost { background: transparent; color: var(--ink); }
 
+  /* ---- Hero tool buttons (second row) ---- */
+  .cta-tools { margin-top: 14px; }
+  .btn-tool {
+    display: flex; flex-direction: column; align-items: flex-start;
+    background: transparent; color: var(--ink);
+    border: 2px solid var(--steel);
+    padding: 12px 20px; text-decoration: none;
+    text-transform: none; letter-spacing: normal;
+    font-family: Georgia, serif; font-weight: 700; font-size: 15px;
+    line-height: 1.2;
+    transition: transform .12s ease, box-shadow .12s ease, background .15s ease;
+  }
+  .btn-tool:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--steel);
+    background: var(--paper-dim);
+  }
+  .btn-tool .btn-sub {
+    display: block; margin-top: 4px;
+    font-family: "Courier New", monospace; font-weight: normal;
+    font-size: 12px; color: var(--steel);
+    text-transform: none; letter-spacing: 0.02em;
+  }
+
   /* ---- Stat strip ---- */
   .stats {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
@@ -235,6 +259,33 @@
     }
   }
 
+  /* ---- Inline figure (what the camera sees) ---- */
+  .cam-figure {
+    margin: 24px 0; max-width: 520px;
+  }
+  .cam-figure img {
+    display: block; width: 100%; height: auto;
+    border: 2px solid var(--ink); cursor: zoom-in;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .cam-figure img:hover { transform: translateY(-2px); box-shadow: 4px 4px 0 var(--line); }
+  .cam-figure figcaption {
+    font-size: 12px; color: var(--steel); margin-top: 8px; line-height: 1.45;
+  }
+
+  /* ---- Lightbox ---- */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 1200;
+    background: rgba(18, 23, 28, 0.9);
+    align-items: center; justify-content: center; padding: 24px;
+    cursor: zoom-out;
+  }
+  .lightbox.is-open { display: flex; animation: fadeIn .2s ease; }
+  .lightbox img {
+    max-width: 100%; max-height: 90vh;
+    border: 3px solid var(--paper);
+  }
+
   /* ---- Videos ---- */
   .video-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -276,8 +327,8 @@
     display: block; font-size: 12px; color: var(--steel); margin-top: 3px;
   }
 
-  /* ---- Map ---- */
-  #map-embed {
+  /* ---- Map + Flocked panels ---- */
+  #map-embed, #flocked-cta {
     border: 3px solid var(--ink); margin-top: 8px;
     background: var(--paper-dim); min-height: 300px;
     display: flex; align-items: center; justify-content: center;
@@ -443,35 +494,3 @@
     .rec-dot { animation: none; }
     .reveal { opacity: 1; transform: none; }
   }
-/* ---- Hero tool buttons (second row) ---- */
-  .cta-tools { margin-top: 14px; }
-  .btn-tool {
-    display: flex; flex-direction: column; align-items: flex-start;
-    background: transparent; color: var(--ink);
-    border: 2px solid var(--steel);
-    padding: 12px 20px; text-decoration: none;
-    text-transform: none; letter-spacing: normal;
-    font-family: Georgia, serif; font-weight: 700; font-size: 15px;
-    line-height: 1.2;
-    transition: transform .12s ease, box-shadow .12s ease, background .15s ease;
-  }
-  .btn-tool:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--steel);
-    background: var(--paper-dim);
-  }
-  .btn-tool .btn-sub {
-    display: block; margin-top: 4px;
-    font-family: "Courier New", monospace; font-weight: normal;
-    font-size: 12px; color: var(--steel);
-    text-transform: none; letter-spacing: 0.02em;
-  }
-
-  /* ---- Have I Been Flocked embed ---- */
-  #flocked-embed {
-    border: 3px solid var(--ink); margin-top: 8px;
-    background: var(--paper-dim); min-height: 300px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  #flocked-embed iframe { width: 100%; height: 640px; border: 0; display: block; }
-  @media (max-width: 620px) { #flocked-embed iframe { height: 560px; } }
