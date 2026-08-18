@@ -494,6 +494,13 @@ section.alt .acc { background: var(--paper); }
 /* ---- Records page ---- */
 .hero-records { padding: 56px 0 40px; }
 .hero-records h1 em { font-style: normal; color: var(--signal); }
+.records-h1 {
+  font-size: clamp(28px, 4.4vw, 44px);
+  margin-bottom: 22px;
+}
+@media (max-width: 560px) {
+  .records-h1 { font-size: clamp(24px, 6.5vw, 32px); }
+}
 #records-body { padding: 48px 0; }
 .doc-links {
   border-left: 4px solid var(--steel); padding: 14px 0 14px 18px;
