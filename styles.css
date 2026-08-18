@@ -62,9 +62,16 @@ header {
   display: flex; align-items: center; gap: 10px;
   text-decoration: none; color: var(--ink);
   transition: transform .15s ease;
+  flex-shrink: 0;
 }
 .brand:hover { transform: translateX(2px); }
-.brand-logo { height: 34px; width: auto; display: block; }
+.brand-logo {
+  height: 26px !important;
+  width: auto !important;
+  max-height: 26px;
+  display: block;
+  flex-shrink: 0;
+}
 .brand-text {
   font-family: Georgia, serif; font-weight: 700; font-size: 20px;
   text-transform: uppercase; letter-spacing: 0.02em; color: var(--ink);
@@ -72,7 +79,7 @@ header {
 .brand-text span { color: var(--signal); }
 @media (max-width: 900px) {
   .brand-text { font-size: 17px; }
-  .brand-logo { height: 28px; }
+  .brand-logo { height: 22px !important; max-height: 22px; }
 }
 
 nav a {
