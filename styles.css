@@ -111,7 +111,7 @@ nav a:hover { color: var(--signal); }
 nav a:hover::after { transform: scaleX(1); }
 nav a.is-active { color: var(--signal); }
 nav a.is-active::after { transform: scaleX(1); }
-@media (max-width: 1040px) and (min-width: 951px) {
+@media (max-width: 1160px) and (min-width: 1081px) {
   .nav-links { gap: 15px; }
   .nav-links a { font-size: 12px; letter-spacing: 0.02em; }
 }
@@ -142,7 +142,7 @@ nav a.is-active::after { transform: scaleX(1); }
 .nav-mobile a:active { background: var(--paper-dim); }
 .nav-mobile a::after { display: none; }
 
-@media (max-width: 950px) {
+@media (max-width: 1080px) {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
 }
@@ -548,4 +548,177 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   * { animation: none !important; transition: none !important; }
   .rec-dot { animation: none; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* ---- Petition callout on the home page ---- */
+.petition-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+  border: 3px solid var(--ink);
+  border-left: 8px solid var(--signal);
+  background: var(--paper);
+  padding: 26px 28px;
+  margin: 28px 0;
+  box-shadow: 6px 6px 0 var(--line);
+}
+.petition-callout .tag {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--signal);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.petition-callout h3 { font-size: 22px; margin-bottom: 8px; }
+.petition-callout p { max-width: 620px; font-size: 14px; }
+.petition-callout .btn { white-space: nowrap; }
+
+/* ---- Petition page ---- */
+.petition-hero { padding-bottom: 56px; }
+.petition-hero .lede { max-width: 760px; }
+
+.petition-statement {
+  max-width: 760px;
+  border: 3px solid var(--ink);
+  border-left: 8px solid var(--signal);
+  background: var(--paper);
+  padding: 32px;
+  margin-top: 26px;
+  box-shadow: 7px 7px 0 var(--line);
+}
+.petition-statement p { margin-bottom: 18px; }
+.petition-statement p:last-child { margin-bottom: 0; }
+.petition-demands { margin: 4px 0 22px 24px; }
+.petition-demands li { margin-bottom: 12px; padding-left: 6px; }
+.petition-demands li::marker {
+  color: var(--signal);
+  font-family: Georgia, serif;
+  font-weight: 700;
+}
+.petition-source-note { max-width: 760px; margin-top: 24px; }
+
+.petition-card {
+  max-width: 760px;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  padding: 32px;
+  box-shadow: 7px 7px 0 var(--line);
+}
+.petition-name-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.petition-field { margin-bottom: 22px; }
+.petition-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.petition-field label > span:not(.optional) { color: var(--signal); }
+.petition-field .optional {
+  margin-left: 6px;
+  color: var(--steel);
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.petition-field input,
+.petition-field select,
+.petition-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: 15px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.petition-field input,
+.petition-field select { min-height: 52px; }
+.petition-field textarea { min-height: 130px; resize: vertical; }
+.petition-field select {
+  cursor: pointer;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+    linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+  background-position:
+    calc(100% - 19px) 22px,
+    calc(100% - 13px) 22px;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 44px;
+}
+.petition-field input:focus,
+.petition-field select:focus,
+.petition-field textarea:focus {
+  outline: none;
+  border-color: var(--signal);
+  box-shadow: 4px 4px 0 var(--paper-dim);
+}
+.field-note {
+  margin-top: 7px;
+  color: var(--steel);
+  font-size: 12px;
+}
+.petition-confirm {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 18px 0;
+  margin-bottom: 8px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  cursor: pointer;
+}
+.petition-confirm input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--signal);
+}
+.petition-submit { width: 100%; text-align: center; margin-top: 4px; }
+.petition-submit[disabled] { cursor: wait; opacity: .65; }
+.petition-status {
+  border-left: 4px solid var(--signal);
+  margin-top: 18px;
+  padding: 12px 14px;
+  background: var(--paper-dim);
+  font-size: 14px;
+}
+.petition-status.is-ok { border-left-color: #2c6e3f; }
+.petition-status.is-error { border-left-color: var(--signal); }
+.petition-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+.petition-privacy {
+  max-width: 760px;
+  margin-top: 20px;
+  color: var(--steel);
+  font-size: 12px;
+}
+
+@media (max-width: 680px) {
+  .petition-callout { grid-template-columns: 1fr; gap: 18px; padding: 22px 18px; }
+  .petition-callout .btn { width: 100%; text-align: center; }
+  .petition-name-grid { grid-template-columns: 1fr; gap: 0; }
+  .petition-card,
+  .petition-statement { padding: 22px 18px; box-shadow: 4px 4px 0 var(--line); }
 }
