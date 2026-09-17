@@ -607,6 +607,8 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   padding: 32px;
   box-shadow: 7px 7px 0 var(--line);
 }
+.tally-card { padding: 20px; overflow: hidden; }
+.tally-card iframe { display: block; width: 100%; border: 0; }
 .petition-name-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -721,4 +723,5 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   .petition-name-grid { grid-template-columns: 1fr; gap: 0; }
   .petition-card,
   .petition-statement { padding: 22px 18px; box-shadow: 4px 4px 0 var(--line); }
+  .tally-card { padding: 10px 8px; }
 }
