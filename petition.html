@@ -109,109 +109,21 @@
       <h2>Sign the petition</h2>
       <p class="prose section-intro">Your street address is not needed. Required fields are marked with an asterisk.</p>
 
-      <div class="petition-card">
-        <form id="petition-form" action="https://formspree.io/f/xvzewpqb" method="POST">
-          <input type="hidden" name="form_type" value="DeFlock the Shoals petition signature">
-          <input type="hidden" name="petition_version" value="End warrantless license plate surveillance — September 2026">
-          <input type="hidden" name="_subject" value="New DeFlock the Shoals petition signature">
-
-          <div class="petition-name-grid">
-            <div class="petition-field">
-              <label for="petition-first">First name <span aria-hidden="true">*</span></label>
-              <input type="text" id="petition-first" name="first_name" autocomplete="given-name" required>
-            </div>
-
-            <div class="petition-field">
-              <label for="petition-last">Last name <span aria-hidden="true">*</span></label>
-              <input type="text" id="petition-last" name="last_name" autocomplete="family-name" required>
-            </div>
-          </div>
-
-          <div class="petition-field">
-            <label for="petition-location">Where you live <span aria-hidden="true">*</span></label>
-            <select id="petition-location" name="location" required>
-              <option value="">Select your city or area</option>
-
-              <optgroup label="Florence">
-                <option value="Florence — District 1">Florence — District 1</option>
-                <option value="Florence — District 2">Florence — District 2</option>
-                <option value="Florence — District 3">Florence — District 3</option>
-                <option value="Florence — District 4">Florence — District 4</option>
-                <option value="Florence — District 5">Florence — District 5</option>
-                <option value="Florence — District 6">Florence — District 6</option>
-                <option value="Florence — district not sure">Florence — district not sure</option>
-              </optgroup>
-
-              <optgroup label="Muscle Shoals">
-                <option value="Muscle Shoals — city resident">Muscle Shoals — city resident</option>
-              </optgroup>
-
-              <optgroup label="Sheffield">
-                <option value="Sheffield — District 1">Sheffield — District 1</option>
-                <option value="Sheffield — District 2">Sheffield — District 2</option>
-                <option value="Sheffield — District 3">Sheffield — District 3</option>
-                <option value="Sheffield — District 4">Sheffield — District 4</option>
-                <option value="Sheffield — District 5">Sheffield — District 5</option>
-                <option value="Sheffield — district not sure">Sheffield — district not sure</option>
-              </optgroup>
-
-              <optgroup label="Tuscumbia">
-                <option value="Tuscumbia — District 1">Tuscumbia — District 1</option>
-                <option value="Tuscumbia — District 2">Tuscumbia — District 2</option>
-                <option value="Tuscumbia — District 3">Tuscumbia — District 3</option>
-                <option value="Tuscumbia — District 4">Tuscumbia — District 4</option>
-                <option value="Tuscumbia — District 5">Tuscumbia — District 5</option>
-                <option value="Tuscumbia — district not sure">Tuscumbia — district not sure</option>
-              </optgroup>
-
-              <optgroup label="Lauderdale County">
-                <option value="Lauderdale County — District 1, outside Florence">Lauderdale County — District 1, outside Florence</option>
-                <option value="Lauderdale County — District 2, outside Florence">Lauderdale County — District 2, outside Florence</option>
-                <option value="Lauderdale County — district not sure, outside Florence">Lauderdale County — district not sure, outside Florence</option>
-              </optgroup>
-
-              <optgroup label="Colbert County">
-                <option value="Colbert County — District 1, outside a listed city">Colbert County — District 1, outside a listed city</option>
-                <option value="Colbert County — District 2, outside a listed city">Colbert County — District 2, outside a listed city</option>
-                <option value="Colbert County — District 3, outside a listed city">Colbert County — District 3, outside a listed city</option>
-                <option value="Colbert County — District 4, outside a listed city">Colbert County — District 4, outside a listed city</option>
-                <option value="Colbert County — District 5, outside a listed city">Colbert County — District 5, outside a listed city</option>
-                <option value="Colbert County — District 6, outside a listed city">Colbert County — District 6, outside a listed city</option>
-                <option value="Colbert County — district not sure, outside a listed city">Colbert County — district not sure, outside a listed city</option>
-              </optgroup>
-
-              <optgroup label="Other">
-                <option value="Other Shoals community">Other Shoals community</option>
-                <option value="Outside the Shoals — supporter">Outside the Shoals — supporter</option>
-              </optgroup>
-            </select>
-          </div>
-
-          <div class="petition-field">
-            <label for="petition-email">Email <span class="optional">Optional</span></label>
-            <input type="email" id="petition-email" name="email" autocomplete="email" inputmode="email">
-            <p class="field-note">Only used if we need to verify your signature or send a petition update. It will not be published.</p>
-          </div>
-
-          <div class="petition-field">
-            <label for="petition-comment">Why this matters to you <span class="optional">Optional</span></label>
-            <textarea id="petition-comment" name="comment" rows="5" maxlength="1200" placeholder="Write a short comment for local officials, if you want."></textarea>
-          </div>
-
-          <input type="text" name="_gotcha" class="petition-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-          <label class="petition-confirm">
-            <input type="checkbox" name="signature_confirmation" value="I voluntarily sign and allow my name and location to be presented with this petition" required>
-            <span>I am signing voluntarily, and I understand that my name and selected location may be included when this petition is presented to public officials. <strong>My email address will not be published.</strong></span>
-          </label>
-
-          <button type="submit" class="btn btn-primary petition-submit" id="petition-submit">Sign the petition</button>
-
-          <p class="petition-status" id="petition-status" role="status" aria-live="polite" hidden></p>
-        </form>
+      <div class="petition-card tally-card">
+        <iframe
+          data-tally-src="https://tally.so/embed/vGRPOQ?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1"
+          src="https://tally.so/embed/vGRPOQ?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1"
+          loading="lazy"
+          width="100%"
+          height="987"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="DeFlock the Shoals petition signature form"
+        ></iframe>
       </div>
 
-      <p class="petition-privacy">This form is processed through Formspree and sent to DeFlock the Shoals. We do not ask for your street address, phone number, or license plate.</p>
+      <p class="petition-privacy">Petition responses are securely processed and stored by Tally. We do not ask for your street address, phone number, or license plate.</p>
     </div>
   </section>
 
@@ -229,6 +141,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script async src="https://tally.so/widgets/embed.js"></script>
 <script data-goatcounter="https://deflocktheshoals.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </body>
