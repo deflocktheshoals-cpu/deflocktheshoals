@@ -158,62 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // --- 7. Petition form via Formspree (stay on page) ---
-  var petitionForm = document.getElementById("petition-form");
-  var petitionStatus = document.getElementById("petition-status");
-  var petitionSubmit = document.getElementById("petition-submit");
-
-  if (petitionForm) {
-    petitionForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      var data = new FormData(petitionForm);
-
-      if (petitionStatus) {
-        petitionStatus.hidden = false;
-        petitionStatus.classList.remove("is-ok", "is-error");
-        petitionStatus.textContent = "Submitting your signature...";
-      }
-
-      if (petitionSubmit) {
-        petitionSubmit.disabled = true;
-        petitionSubmit.textContent = "Submitting...";
-      }
-
-      fetch(petitionForm.action, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" }
-      })
-        .then(function (response) {
-          if (response.ok) {
-            petitionForm.reset();
-            if (petitionStatus) {
-              petitionStatus.classList.add("is-ok");
-              petitionStatus.textContent =
-                "Your name has been added. Thank you for standing up for the Shoals.";
-            }
-          } else {
-            throw new Error("Formspree rejected the submission");
-          }
-        })
-        .catch(function () {
-          if (petitionStatus) {
-            petitionStatus.classList.add("is-error");
-            petitionStatus.textContent =
-              "Your signature could not be submitted. Please check your connection and try again.";
-          }
-        })
-        .finally(function () {
-          if (petitionSubmit) {
-            petitionSubmit.disabled = false;
-            petitionSubmit.textContent = "Sign the petition";
-          }
-        });
-    });
-  }
-
-  // --- 8. Scroll reveal ---
+  // --- 7. Scroll reveal ---
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     var obs = new IntersectionObserver(
@@ -236,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // --- 9. Mobile nav toggle ---
+  // --- 8. Mobile nav toggle ---
   var navToggle = document.getElementById("nav-toggle");
   var navMobile = document.getElementById("nav-mobile");
   if (navToggle && navMobile) {
@@ -254,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // --- 10. Image lightbox (tap to enlarge) ---
+  // --- 9. Image lightbox (tap to enlarge) ---
   var zoomImgs = document.querySelectorAll(".zoomable");
   var lightbox = document.getElementById("lightbox");
   var lightboxImg = document.getElementById("lightbox-img");
